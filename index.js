@@ -2,6 +2,8 @@ let pool = process.env.pool || 'http://localhost:8089'
 console.log('Pooling Blockchain with', pool)
 const io = require('socket.io-client').connect(pool)
 const {compareFace} = require('./process/compare')
+const express = require('express')
+const app = express()
 
 io.on('connected', console.log)
 
@@ -25,3 +27,7 @@ io.on('hash', (data) => {
         })
     }
 })
+
+// LISTEN ON PORT
+let port = process.env.PORT || 8091
+app.listen(port, () => 'Listening on port', port)
