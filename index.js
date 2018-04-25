@@ -5,10 +5,10 @@ const {compareFace} = require('./process/compare')
 const express = require('express')
 const app = express()
 
-io.on('connected', console.log)
-
-// JOIN BLOCK
-io.emit('join_block', ['Setro', 'Demostrasi'])
+io.on('connected', (msg) => {
+	console.log(msg)
+	io.emit('join_block', ['Setro', 'Demostrasi'])
+})
 
 // // SEND DATA COMPARE
 // io.emit('hash', {block : 'setro', hash : 'hello', image_url1 : 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Russia-Portugal_CC2017_%2811%29_%28cropped%29.jpg/250px-Russia-Portugal_CC2017_%2811%29_%28cropped%29.jpg', image_url2 : 'http://givemesport.azureedge.net/images/17/12/29/a4c6f7af051d676d08174d89f4daffa5/960.jpg'})
